@@ -1,122 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function Home() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 flex items-center justify-center px-4">
+      <div className="text-center max-w-2xl mx-auto">
+        <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm px-4 py-2 rounded-full mb-6">
+          <span className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+          AI Powered · Built for Placements
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
+        <h1 className="text-5xl font-bold text-white mb-4 leading-tight">
+          Land Your <span className="text-blue-400">Dream Job</span>
+        </h1>
+        <p className="text-slate-400 text-lg mb-8 max-w-md mx-auto">
+          Upload your resume, paste a job description, get an AI match score and personalized suggestions instantly.
+        </p>
+        <div className="flex gap-4 justify-center">
+          <button className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-3 rounded-xl transition-all duration-200 hover:scale-105">
+            Analyze My Resume →
+          </button>
+          <button className="border border-slate-600 hover:border-slate-400 text-slate-300 font-semibold px-8 py-3 rounded-xl transition-all duration-200">
+            Browse Jobs
+          </button>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+        <div className="mt-16 grid grid-cols-3 gap-6">
+          <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-4">
+            <div className="text-2xl font-bold text-blue-400 mb-1">AI Score</div>
+            <div className="text-slate-400 text-sm">Match % with any job</div>
+          </div>
+          <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-4">
+            <div className="text-2xl font-bold text-blue-400 mb-1">Skill Gap</div>
+            <div className="text-slate-400 text-sm">Know what to learn</div>
+          </div>
+          <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-4">
+            <div className="text-2xl font-bold text-blue-400 mb-1">ATS Check</div>
+            <div className="text-slate-400 text-sm">Beat the bots</div>
+          </div>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      </div>
+    </div>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <BrowserRouter>
+      <Toaster position="top-right" />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
