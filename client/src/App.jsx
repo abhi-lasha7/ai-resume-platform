@@ -1,5 +1,10 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Dashboard from './pages/Dashboard';
+import Upload from './pages/Upload';
+import Results from './pages/Results';
 
 function Home() {
   return (
@@ -13,15 +18,15 @@ function Home() {
           Land Your <span className="text-blue-400">Dream Job</span>
         </h1>
         <p className="text-slate-400 text-lg mb-8 max-w-md mx-auto">
-          Upload your resume, paste a job description, get an AI match score and personalized suggestions instantly.
+          Upload your resume, paste a job description, get an AI match score instantly.
         </p>
         <div className="flex gap-4 justify-center">
-          <button className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-3 rounded-xl transition-all duration-200 hover:scale-105">
-            Analyze My Resume →
-          </button>
-          <button className="border border-slate-600 hover:border-slate-400 text-slate-300 font-semibold px-8 py-3 rounded-xl transition-all duration-200">
-            Browse Jobs
-          </button>
+          <a href="/register" className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-3 rounded-xl transition-all duration-200 hover:scale-105">
+            Get Started →
+          </a>
+          <a href="/login" className="border border-slate-600 hover:border-slate-400 text-slate-300 font-semibold px-8 py-3 rounded-xl transition-all duration-200">
+            Sign In
+          </a>
         </div>
         <div className="mt-16 grid grid-cols-3 gap-6">
           <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-4">
@@ -48,6 +53,11 @@ function App() {
       <Toaster position="top-right" />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/upload" element={<Upload />} />
+        <Route path="/results" element={<Results />} />
       </Routes>
     </BrowserRouter>
   );
