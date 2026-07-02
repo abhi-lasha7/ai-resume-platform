@@ -96,6 +96,20 @@ export default function Results() {
         </div>
 
         <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-6 mb-6">
+          <h3 className="text-white font-semibold mb-2">Resume Strength</h3>
+          <div className="flex items-center gap-4">
+            <div className="flex-1 bg-slate-700 rounded-full h-3">
+              <div
+                className="bg-purple-500 h-3 rounded-full transition-all"
+                style={{ width: `${analysis.resumeStrength || 0}%` }}
+              ></div>
+            </div>
+            <span className="text-white font-semibold">{analysis.resumeStrength || 0}%</span>
+          </div>
+          <p className="text-slate-400 text-xs mt-2">Overall resume completeness and quality</p>
+        </div>
+
+        <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-6 mb-6">
           <h3 className="text-white font-semibold mb-4">💡 Suggestions to Improve</h3>
           <ul className="space-y-3">
             {(analysis.suggestions || []).map((s, i) => (

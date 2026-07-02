@@ -1,6 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
 const { extractText } = require('../services/fileParser');
 const { parseResume, matchResumeToJob } = require('../services/aiService');
+const { calculateResumeStrength } = require('../services/strengthService');
 
 const prisma = new PrismaClient();
 
@@ -34,6 +35,8 @@ const uploadAndAnalyze = async (req, res) => {
     return res.status(500).json({ success: false, message: 'AI analysis failed. Please try again.' });
   }
 
+  const resumeStrength = calculateResumeStrength(parsedData);
+
   const resume = await prisma.resume.create({
     data: {
       userId: req.user.id,
@@ -54,7 +57,8 @@ const uploadAndAnalyze = async (req, res) => {
       suggestions: matchResult.suggestions,
       atsScore: matchResult.atsScore,
       experienceGap: matchResult.experienceGap,
-      overallFeedback: matchResult.overallFeedback
+      overallFeedback: matchResult.overallFeedback,
+      resumeStrength: resumeStrength
     }
   });
 
