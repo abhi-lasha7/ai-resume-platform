@@ -58,5 +58,6 @@ model Analysis {
   atsScore        Int?
   experienceGap   String?
   overallFeedback String?
+  resumeStrength  Int?          
   createdAt       DateTime @default(now())
 }
